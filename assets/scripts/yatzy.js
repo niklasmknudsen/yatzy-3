@@ -59,6 +59,7 @@ function buildPlayBoard() {
             let gridRow = createElement('div');
             gridRow.classList.add('grid-row');
             gridRow.classList.add('grid-row__right');
+            gridRow.dataset.right = j;
             gridRow.innerHTML = `<label class="yatzy-playboard_label"> ${gameSumOptions[j]} </label>
             <input class="yatzy-playboard__inputfields" type="text" disabled />`;
             playboardcontainer.appendChild(gridRow);
@@ -71,7 +72,7 @@ function disableRoll() {
    document.getElementById("rollBtn").disabled = true;
 }
 
-
+/*
 function frequency(array) {
     let freq = [];
 
@@ -83,7 +84,7 @@ function frequency(array) {
     return freq;
 }
 
-
+*/
 
 function update(turn){
     for(var i = 0; i < dice.length; i++) {
