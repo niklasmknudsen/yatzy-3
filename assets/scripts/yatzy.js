@@ -40,11 +40,12 @@ function buildPlayBoard() {
 
 
 
-function update(){
+function update(turn){
     for(var i = 0; i < dice.length; i++) {
         document.getElementById("die"+(1+i)).src="assets/images/" + dice[i].value + ".png"
 
     }
+    document.getElementById("turnCount").innerHTML = `${turn}`
     console.log("test")
 
 }

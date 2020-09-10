@@ -21,7 +21,7 @@ function gameRound ()
         }
         console.log()
         this.turn++
-        update();
+        update(this.turn);
         return getValues();
     }
 }
