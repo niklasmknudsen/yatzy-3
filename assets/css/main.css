@@ -74,6 +74,13 @@ main {
     border-radius: 9px;
     background-repeat: no-repeat;
     background-position: center;
+    position:relative
+}
+
+[id^="die"] {
+    border-radius: 8px;
+    width: 55px;
+    height: 55px;
 }
 
 

@@ -17,6 +17,9 @@ const gameOptions = [
     "chance", "yatzy", "total"
 ];
 
+const imgDies = [
+    
+]
 
 function initialiseYatzyBoard() {
     buildPlayBoard();
@@ -53,7 +56,14 @@ function frequency(array) {
     return freq;
 }
 
+function update(){
+    for(var i = 0; i < dice.length; i++) {
+        document.getElementById("die"+(1+i)).src="assets/images/" + dice[i].value + ".png"
 
+    }
+    console.log("test")
+
+}
 
 function createElement(element) {
     return document.createElement(element);
