@@ -1,5 +1,7 @@
 const playboardcontainer = document.getElementsByClassName('yatzy-playboard__container')[0]; // grabs playboard
 
+const divs = document.getElementsByClassName("dice");
+
 const gameOptions = [
     "1-s",
     "2-s",
@@ -17,12 +19,27 @@ const gameOptions = [
     "chance", "yatzy", "total"
 ];
 
-const imgDies = [
-    
-]
+
+
+
 
 function initialiseYatzyBoard() {
     buildPlayBoard();
+    
+
+    //ikke færdig, virker ikke, skal også nok smide det i sin egen funktion
+    for(var i = 0; i < divs.length; i++){
+    document.getElementsByClassName("dice")[i].addEventListener("click", function(){
+        if (this.style.border == "3px solid red") {
+            this.style.border = "3px solid black";
+        }
+        if (this.style.border == "3px solid black") {
+            this.style.border = "3px solid red";
+        }
+        
+    })
+    
+    }
 }
 
 function buildPlayBoard() {
@@ -37,6 +54,10 @@ function buildPlayBoard() {
 }
 
 
+function disableRoll() {
+   document.getElementById("rollBtn").disabled = true;
+}
+
 
 
 
@@ -45,8 +66,8 @@ function update(turn){
         document.getElementById("die"+(1+i)).src="assets/images/" + dice[i].value + ".png"
 
     }
-    document.getElementById("turnCount").innerHTML = `${turn}`
-    console.log("test")
+    document.getElementById("turnCount").innerHTML = turn
+   
 
 }
 
