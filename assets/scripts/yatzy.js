@@ -21,13 +21,14 @@ const gameOptions = [
 
 const gameSumOptions = ["sum", "bonus", "total"];
 
-
+// grid-rows
+let gridRows;
 
 
 
 function initialiseYatzyBoard() {
     buildPlayBoard();
-    
+    calculateTotal();
 
     //ikke færdig, virker ikke, skal også nok smide det i sin egen funktion
     for(var i = 0; i < divs.length; i++){
@@ -51,7 +52,7 @@ function buildPlayBoard() {
             gridRow.classList.add('grid-row');
             gridRow.classList.add('grid-row__left');
             gridRow.innerHTML = `<label> ${gameOptions[i]} </label>
-            <input class="yatzy-playboard__inputfields" type="text" disabled />`;
+            <input class="yatzy-playboard__inputfields" type="number" disabled value="0" />`;
             playboardcontainer.appendChild(gridRow);
         }
 
@@ -61,10 +62,13 @@ function buildPlayBoard() {
             gridRow.classList.add('grid-row__right');
             gridRow.dataset.right = j;
             gridRow.innerHTML = `<label class="yatzy-playboard_label"> ${gameSumOptions[j]} </label>
-            <input class="yatzy-playboard__inputfields" type="text" disabled />`;
+            <input class="yatzy-playboard__inputfields" type="number" value="0" />`;
             playboardcontainer.appendChild(gridRow);
         }
     }
+    // stores each grid-row as an array
+    // used to calculate total
+    gridRows = Array.from(document.querySelectorAll('.grid-row'));
 }
 
 
@@ -95,6 +99,60 @@ function update(turn){
 
 }
 
+/**
+ * Function to get all inputfields in the DOM.
+ * @return array of all inputfields
+ */
+function getInputFields() {
+    let inputfields = Array.from(gridRows.map(x => {
+        if (x.dataset.right != 2) {
+             return x.childNodes[2];
+        }
+        return null;
+     }));
+
+    return inputfields;
+}
+
+function calculateTotal() {
+    // grabs inputfields
+    let inputfields = Array.from(getInputFields());
+    let valueFields = [];
+
+    // iterate over each inputfield and creates an new array without null values
+    inputfields.forEach((element, index) => {
+        if (element != null) {
+            valueFields.push(element.value);
+        }
+    });
+
+    // calculates the total sum of all input fields
+    const total = sum(valueFields);
+    
+    // grabs total input field and sets it value to (total)
+    const inputfieldTotal = document.querySelector('[data-right="2"]').childNodes[2];
+    inputfieldTotal.value = total;
+}
+
+/**
+ * Function to calculate sum of all input fields
+ * pre: Arr must an array of numbers
+ * @param {*} arr to calculate sum from
+ */
+function sum(arr) {
+    let sum;
+    try {
+        sum = parseInt(arr.reduce((sum, x) => sum + x));
+    } catch(err) {
+        console.log(err);
+    }
+    return sum;
+}
+
+/**
+ * Function to create an HTML Element
+ * @param {*} element to create
+ */
 function createElement(element) {
     return document.createElement(element);
 }
