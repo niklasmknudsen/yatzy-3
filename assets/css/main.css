@@ -19,6 +19,8 @@ main {
     grid-template-columns: repeat(var(--colNum), 1fr);;
 }
 
+
+
 .grid-row {
     grid-row: auto;
     grid-column: auto;
@@ -47,8 +49,10 @@ main {
     height: auto;
 }
 
+
+
 .wrapper{
-    width: fit-content;
+    width: 400px;
     padding: 10px;
     padding-bottom: 10px;
     margin: auto;
@@ -75,10 +79,6 @@ main {
     padding: 5px;
 }
 
-.yatzy-playboard{
-    width: 100%;
-    background-color: blue;
-}
 
 .dice{
     float: left;
@@ -90,6 +90,13 @@ main {
     border-radius: 9px;
     background-repeat: no-repeat;
     background-position: center;
+    position:relative
+}
+
+[id^="die"] {
+    border-radius: 8px;
+    width: 55px;
+    height: 55px;
 }
 
 

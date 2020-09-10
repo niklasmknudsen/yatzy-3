@@ -1,5 +1,7 @@
 let playboardcontainer = document.getElementsByClassName('yatzy-playboard__container')[0]; // grabs playboard
 
+const divs = document.getElementsByClassName("dice");
+
 const gameOptions = [
     "1-s",
     "2-s",
@@ -20,9 +22,26 @@ const gameOptions = [
 const gameSumOptions = ["sum", "bonus", "total"];
 
 
+
+
+
 function initialiseYatzyBoard() {
     buildPlayBoard();
-    getDieValues();
+    
+
+    //ikke færdig, virker ikke, skal også nok smide det i sin egen funktion
+    for(var i = 0; i < divs.length; i++){
+    document.getElementsByClassName("dice")[i].addEventListener("click", function(){
+        if (this.style.border == "3px solid red") {
+            this.style.border = "3px solid black";
+        }
+        if (this.style.border == "3px solid black") {
+            this.style.border = "3px solid red";
+        }
+        
+    })
+    
+    }
 }
 
 function buildPlayBoard() {
@@ -48,11 +67,8 @@ function buildPlayBoard() {
 }
 
 
-function getDieValues() {
-    let dice = Array.from(document.querySelectorAll('dice'));
-
-    let resultSet = frequency(dice);
-    console.log(resultSet);
+function disableRoll() {
+   document.getElementById("rollBtn").disabled = true;
 }
 
 
@@ -68,6 +84,15 @@ function frequency(array) {
 }
 
 
+
+function update(turn){
+    for(var i = 0; i < dice.length; i++) {
+        document.getElementById("die"+(1+i)).src="assets/images/" + dice[i].value + ".png"
+
+    }
+    document.getElementById("turnCount").innerHTML = turn;
+
+}
 
 function createElement(element) {
     return document.createElement(element);
