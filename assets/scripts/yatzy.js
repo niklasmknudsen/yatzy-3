@@ -23,7 +23,6 @@ const imgDies = [
 
 function initialiseYatzyBoard() {
     buildPlayBoard();
-    getDieValues();
 }
 
 function buildPlayBoard() {
@@ -38,23 +37,8 @@ function buildPlayBoard() {
 }
 
 
-function getDieValues() {
-    let dice = Array.from(document.querySelectorAll('dice'));
 
-    let resultSet = frequency(dice);
-    console.log(resultSet);
-}
 
-function frequency(array) {
-    let freq = [];
-
-    for (let i = 0; i < array.length; i++) {
-        let freqIndex = array[i];
-        freq[freqIndex]++;
-    }
-
-    return freq;
-}
 
 function update(){
     for(var i = 0; i < dice.length; i++) {

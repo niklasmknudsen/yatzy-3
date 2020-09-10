@@ -1,16 +1,50 @@
 let roll_btn = document.getElementById("rollBtn");
 
-roll_btn.onclick = RollDie;
-
 const dice = [new Die(), new Die(), new Die(), new Die(), new Die()];
- 
+const thisRound = new gameRound();
+
+let frequency = [0, 0, 0, 0, 0, 0, 0]
+
+
+roll_btn.onclick = thisRound.RollDies;
+
+function gameRound ()
+{
+    this.frequency = [0, 0, 0, 0, 0, 0, 0]
+
+    this.turn = 0
+    
+    this.RollDies = function() {
+        for(var i = 0; i < dice.length; i++) {
+            dice[i].roll();
+            frequency[dice[i].getValue()]++;
+        }
+        console.log()
+        this.turn++
+        update();
+        return getValues();
+    }
+}
+
+/*
+function RollDies () {
+        for(var i = 0; i < dice.length; i++) {
+            dice[i].roll();
+            frequency[dice[i].getValue()]++;
+            console.log(frequency);
+        }
+        console.log()
+        update();
+        return getValues();
+    }
+
+*/
 
 function Die() {
     this.value = 0;
 
     this.roll = function(){
         this.value = Math.floor(Math.random() * 6) + 1;
-        console.log("rolling")
     }
 
     this.getValue = function () {
@@ -26,7 +60,6 @@ function RollDie () {
     console.log()
     update();
     return getValues();
-
 }
 
 
