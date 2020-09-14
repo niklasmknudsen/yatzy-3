@@ -25,10 +25,6 @@ const gameSumOptions = ["sum", "bonus", "total"];
 let gridRows;
 
 
-// grid-rows
-let gridRows;
-
-
 let calculations  = [
     calculateOnePair,
     calculateTwoPairs,
@@ -296,55 +292,8 @@ function updateDie(turn){
 
 }
 
-/**
- * Function to get all inputfields in the DOM.
- * @return array of all inputfields
- */
-function getInputFields() {
-    let inputfields = Array.from(gridRows.map(x => {
-        if (x.dataset.right != 2) {
-             return x.childNodes[2];
-        }
-        return null;
-     }));
 
-    return inputfields;
-}
 
-function calculateTotal() {
-    // grabs inputfields
-    let inputfields = Array.from(getInputFields());
-    let valueFields = [];
-
-    // iterate over each inputfield and creates an new array without null values
-    inputfields.forEach((element, index) => {
-        if (element != null) {
-            valueFields.push(element.value);
-        }
-    });
-
-    // calculates the total sum of all input fields
-    const total = sum(valueFields);
-    
-    // grabs total input field and sets it value to (total)
-    const inputfieldTotal = document.querySelector('[data-right="2"]').childNodes[2];
-    inputfieldTotal.value = total;
-}
-
-/**
- * Function to calculate sum of all input fields
- * pre: Arr must an array of numbers
- * @param {*} arr to calculate sum from
- */
-function sum(arr) {
-    let sum;
-    try {
-        sum = parseInt(arr.reduce((sum, x) => sum + x));
-    } catch(err) {
-        console.log(err);
-    }
-    return sum;
-}
 
 /**
  * Function to create an HTML Element
