@@ -1,7 +1,14 @@
+/**
+ * Function to calculate single 
+ * @param {int} num single number
+ */
 calculateSingle = function(num) {
     return frequency[num] * num;
 }
 
+/**
+ * Function to calculate one-pair 
+ */
 calculateOnePair = function() {
     let result = 0;
 
@@ -13,6 +20,9 @@ calculateOnePair = function() {
     return result;
 }
 
+/**
+ * Function to calculate two-pair 
+ */
 calculateTwoPairs = function() {
 
     let pair1 = 0;
@@ -37,6 +47,9 @@ calculateTwoPairs = function() {
     }
 }
 
+/**
+ * Function to calculate treesame 
+ */
 calculateThreeSame = function() {
 
     let result = 0;
@@ -51,6 +64,9 @@ calculateThreeSame = function() {
 
 }
 
+/**
+ * Function to calculate foursame 
+ */
 calculateFourSame = function() {
 
     let result = 0;
@@ -64,6 +80,9 @@ calculateFourSame = function() {
     return result;
 }
 
+/**
+ * Function to calculate fullhouse
+ */
 calculateFullHouse = function() {
 
     let three = 0;
@@ -89,6 +108,9 @@ calculateFullHouse = function() {
     }
 }
 
+/**
+ * Function to calculate smallstraight
+ */
 calculateSmallStraight = function() {
     if(frequency[1] == 1 && frequency[2] == 1 && frequency[3] == 1 && frequency[4] == 1 && frequency[5] == 1) {
         return 15;
@@ -97,6 +119,9 @@ calculateSmallStraight = function() {
     }
 }
 
+/**
+ * Function to calculate largestraight 
+ */
 calculateLargeStraight = function() {
     if(frequency[2] == 1 && frequency[3] == 1 && frequency[4] == 1 && frequency[5] == 1 && frequency[6] == 1) {
         return 20;
@@ -105,6 +130,9 @@ calculateLargeStraight = function() {
     }
 }
 
+/**
+ * Function to calculate chance 
+ */
 calculateChance = function() {
     let result = 0;
 
@@ -115,6 +143,9 @@ calculateChance = function() {
     return result;
 }
 
+/**
+ * Function to calculate yatzy 
+ */
 calculateYatzy = function() {
     let result = 0;
 
