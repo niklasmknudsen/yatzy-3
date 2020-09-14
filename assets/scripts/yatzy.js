@@ -1,9 +1,8 @@
 let playboardcontainer = document.getElementsByClassName('yatzy-playboard__container')[0]; // grabs playboard
 
 const divs = document.getElementsByClassName("dice");
-/**
- * initialize variables
- */
+
+//Lable names.
 const gameOptions = [
     "1-s",
     "2-s",
@@ -20,15 +19,13 @@ const gameOptions = [
     "large straight",
     "chance", "yatzy"
 ];
-
+//Lable names.
 const gameSumOptions = ["sum", "bonus", "total"];
 
 // grid-rows
 let gridRows;
 
-/**
- * initialize variables
- */
+//calculation Functions
 let calculations  = [
     calculateOnePair,
     calculateTwoPairs,
@@ -40,14 +37,13 @@ let calculations  = [
     calculateChance,
     calculateYatzy,
 ];
-/**
- * event listener calder rollDies() metoden ved mouseclick
- */
+
+// Botton eventlistner
 document.getElementById("rollBtn").addEventListener('click', function(){
     thisRound.RollDies()
 });
 /**
- * On load metode der kaldes i HTML når vi starter web applikationen
+ * Function to initialize the game
  */
 function initialiseYatzyBoard() {
     buildPlayBoard();
@@ -58,7 +54,7 @@ function initialiseYatzyBoard() {
 }
 
 /**
- * Metode der bygger Yatzy Boardet, denne metode kaldes via onload i HTML koden 
+ *Function to build the playboard
  */
 function buildPlayBoard() {
     if (playboardcontainer) {
@@ -101,6 +97,11 @@ function getInputFields() {
     return inputfields;
 }
 
+/**
+ *  Recursive Funciton to set eventlistner on all dies
+ *  @param {int} i Recusive index
+ *  
+ */
 function addListner(i) {
     if (i == 0){
         return undefined
@@ -114,6 +115,11 @@ function addListner(i) {
     }
 }
 
+/**
+ *  Recursive Funciton to set eventlistner on all indputs
+ *  @param {int} i Recusive index
+ *  @param {[]} arr array of indputfield nodes
+ */
 function inputListner(i, arr){
     if (i == 0){
         return undefined
@@ -127,6 +133,10 @@ function inputListner(i, arr){
     }
 }
 
+/**
+ *  Funciton to set picked lable GUI
+ *  @param {int} i the lable picked
+ */
 function lablePicker(i){
     
     getInputFields()[i].style.border = "1px solid red";
@@ -152,6 +162,10 @@ function diePicker(i, arr) {
     return picked
 }
 
+
+/**
+ *  Funciton to reset the Dies boarder
+ */
 function resetDies() {
     for (let i = 0; i < divs.length; i++) {
         divs[i].style.border = "3px solid black"
@@ -159,7 +173,7 @@ function resetDies() {
     }
 }
 /**
- *  sum metode for 1'ere -> 6'ere
+ *  Funciton to sum for 1'ere -> 6'ere
  */
 function sum(arr) {
     let sum = 0;
@@ -172,6 +186,9 @@ function sum(arr) {
     return sum;
 }
 
+/**
+ * Function to set the sum and bonus points value
+ */
 function calculateSum() {
      // grabs inputfields
      let inputfields = getInputFields().slice(0,6);
@@ -197,6 +214,9 @@ function calculateSum() {
 
 }
 
+/**
+ * Function to set the total points value
+ */
 function calculateTotal() {
     // grabs inputfields
     let inputfields = Array.from(getInputFields()).splice(6);
@@ -223,7 +243,8 @@ function calculateTotal() {
 }
 
 /**
- * kalder vores calculateSingle() fra calculate.js
+ * Function to update the gameboard values on single dies values
+ * @param {i} int index for recusive function
  */
 function updateSingles(i) {
     if (i==1) {
@@ -241,6 +262,10 @@ function updateSingles(i) {
 
 }
 
+/**
+ * Function to update the gameboard values
+ * @param {i} int index for recusive function
+ */
 function updateBoard(i) {
     
     if (i==7) {
@@ -258,15 +283,28 @@ function updateBoard(i) {
 
 }
 
+
+/**
+ * Function to disable roll
+ * 
+ */
 function disableRoll() {
    document.getElementById("rollBtn").disabled = true;
 }
 
+/**
+ * Function to eanble roll
+ * 
+ */
 function enableRoll() {
     document.getElementById("rollBtn").disabled = false;
 }
 
 
+/**
+ * Function to update die pictures
+ * @param {turn} int what turn you are in
+ */
 function updateDie(turn){
     for(var i = 0; i < dice.length; i++) {
         document.getElementById("die"+(1+i)).src="assets/images/" + dice[i].value + ".png"
@@ -286,6 +324,10 @@ function createElement(element) {
     return document.createElement(element);
 }
 
+/**
+ * When game is done
+ * 
+ */
 function done () {
     if(confirm(`You have got ${calculateTotal()} point \npress to play again`  )){
         location.reload();
