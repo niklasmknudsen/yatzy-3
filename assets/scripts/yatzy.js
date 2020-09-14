@@ -146,7 +146,9 @@ function lablePicker(i){
 
 
 /**
- *  Metode der søger for at dice kan blive holdt mellem rul
+ *  Recursive Funciton to set style and chose Dies
+ *  @param {int} i Recusive index
+ *  @param {[]} arr array of all dies
  */
 
 function diePicker(i, arr) {
@@ -164,7 +166,7 @@ function diePicker(i, arr) {
 
 
 /**
- *  Funciton to reset the Dies boarder
+ *  Function to reset the Dies boarder
  */
 function resetDies() {
     for (let i = 0; i < divs.length; i++) {
@@ -172,8 +174,9 @@ function resetDies() {
         
     }
 }
+
 /**
- *  Funciton to sum for 1'ere -> 6'ere
+ *  Function to sum for 1'ere -> 6'ere
  */
 function sum(arr) {
     let sum = 0;
@@ -325,7 +328,7 @@ function createElement(element) {
 }
 
 /**
- * When game is done
+ * Function to end game
  * 
  */
 function done () {
