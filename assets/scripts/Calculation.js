@@ -1,5 +1,6 @@
 /**
  * Function to calculate single 
+ * @param {int} num single number
  */
 calculateSingle = function(num) {
     return frequency[num] * num;
