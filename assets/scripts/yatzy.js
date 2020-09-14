@@ -183,25 +183,6 @@ function calculateSum() {
 
 }
 
-
-
-
-/*
-/**
- * Function to calculate sum of all input fields
- * pre: Arr must an array of numbers
- * @param {*} arr to calculate sum from
- 
-function sum(arr) {
-    let sum = 0;
-    try {
-        sum = parseInt(arr.reduce((sum, x) => sum + x));
-    } catch(err) {
-        console.log(err);
-    }
-    return sum;
-}
-*/
 function calculateTotal() {
     // grabs inputfields
     let inputfields = Array.from(getInputFields()).splice(6);
@@ -270,19 +251,6 @@ function enableRoll() {
     document.getElementById("rollBtn").disabled = false;
 }
 
-/*
-function frequency(array) {
-    let freq = [];
-
-    for (let i = 0; i < array.length; i++) {
-        let freqIndex = array[i];
-        freq[freqIndex]++;
-    }
-
-    return freq;
-}
-
-*/
 
 function updateDie(turn){
     for(var i = 0; i < dice.length; i++) {
