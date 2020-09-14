@@ -1,7 +1,9 @@
 let playboardcontainer = document.getElementsByClassName('yatzy-playboard__container')[0]; // grabs playboard
 
 const divs = document.getElementsByClassName("dice");
-
+/**
+ * initialize variables
+ */
 const gameOptions = [
     "1-s",
     "2-s",
@@ -24,7 +26,9 @@ const gameSumOptions = ["sum", "bonus", "total"];
 // grid-rows
 let gridRows;
 
-
+/**
+ * initialize variables
+ */
 let calculations  = [
     calculateOnePair,
     calculateTwoPairs,
@@ -36,11 +40,15 @@ let calculations  = [
     calculateChance,
     calculateYatzy,
 ];
-
+/**
+ * event listener calder rollDies() metoden ved mouseclick
+ */
 document.getElementById("rollBtn").addEventListener('click', function(){
     thisRound.RollDies()
 });
-
+/**
+ * On load metode der kaldes i HTML når vi starter web applikationen
+ */
 function initialiseYatzyBoard() {
     buildPlayBoard();
     addListner(divs.length); 
@@ -49,7 +57,9 @@ function initialiseYatzyBoard() {
    
 }
 
-
+/**
+ * Metode der bygger Yatzy Boardet, denne metode kaldes via onload i HTML koden 
+ */
 function buildPlayBoard() {
     if (playboardcontainer) {
         for (let i = 0; i < gameOptions.length; i++) {
@@ -125,7 +135,9 @@ function lablePicker(i){
 }
 
 
-
+/**
+ *  Metode der søger for at dice kan blive holdt mellem rul
+ */
 
 function diePicker(i, arr) {
     let picked = arr;
@@ -146,7 +158,9 @@ function resetDies() {
         
     }
 }
-
+/**
+ *  sum metode for 1'ere -> 6'ere
+ */
 function sum(arr) {
     let sum = 0;
     
@@ -208,7 +222,9 @@ function calculateTotal() {
     return total
 }
 
-
+/**
+ * kalder vores calculateSingle() fra calculate.js
+ */
 function updateSingles(i) {
     if (i==1) {
         if(!document.querySelector(`input[name='${gameOptions[i-1]}']`).disabled){
@@ -224,7 +240,6 @@ function updateSingles(i) {
     }
 
 }
-
 
 function updateBoard(i) {
     
